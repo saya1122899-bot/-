@@ -3,34 +3,30 @@
 <head>
 <meta charset="utf-8">
 <meta name="viewport" content="width=device-width,initial-scale=1,maximum-scale=1,user-scalable=no,viewport-fit=cover">
-<meta name="theme-color" content="#171717">
-<title>My Photo Library</title>
+<meta name="theme-color" content="#f7e8ed">
+<meta name="apple-mobile-web-app-capable" content="yes">
+<meta name="apple-mobile-web-app-status-bar-style" content="default">
+<meta name="apple-mobile-web-app-title" content="ひとめぼれ本棚">
+<link rel="manifest" href="manifest.webmanifest">
+<link rel="apple-touch-icon" href="icon-192.png">
+<title>ひとめぼれ本棚</title>
 <style>
-:root{color-scheme:dark;--bg:#111;--panel:#1c1c1e;--line:#343438;--muted:#aaa;--accent:#e7d6b2}
-*{box-sizing:border-box}body{margin:0;background:var(--bg);color:#f5f5f5;font-family:-apple-system,BlinkMacSystemFont,"Hiragino Kaku Gothic ProN",Meiryo,sans-serif}
-button,input{font:inherit}button{border:1px solid var(--line);background:#29292d;color:#fff;border-radius:12px;padding:11px 14px;cursor:pointer}button:disabled{opacity:.4}
-header{position:sticky;top:0;z-index:5;background:#151517ed;backdrop-filter:blur(16px);border-bottom:1px solid var(--line);padding: max(12px,env(safe-area-inset-top)) 16px 12px;display:flex;align-items:center;justify-content:space-between}
-.brand{font-weight:700;letter-spacing:.08em}.brand small{display:block;color:var(--muted);font-size:10px;font-weight:400;letter-spacing:.16em;margin-top:3px}
-main{max-width:1050px;margin:auto;padding:22px 16px 80px}.intro{display:flex;justify-content:space-between;align-items:end;gap:12px;margin:8px 0 20px}.intro h1{font-size:25px;margin:0 0 6px}.intro p{margin:0;color:var(--muted);font-size:13px}
-.actions{display:flex;gap:8px;flex-wrap:wrap}.primary{background:var(--accent);color:#171717;border-color:var(--accent);font-weight:700}
-input[type=file]{display:none}.notice{border:1px solid #48433a;background:#28251f;padding:12px 14px;border-radius:12px;color:#d7c9ae;font-size:12px;line-height:1.6;margin-bottom:20px}
-.books{display:grid;grid-template-columns:repeat(auto-fill,minmax(145px,1fr));gap:16px}.book{min-width:0;cursor:pointer}.cover{aspect-ratio:3/4;border-radius:8px;background:linear-gradient(145deg,#343434,#171717);border:1px solid #444;overflow:hidden;display:flex;align-items:center;justify-content:center;box-shadow:0 8px 22px #0008;position:relative}.cover img{width:100%;height:100%;object-fit:cover}.cover .placeholder{padding:14px;text-align:center;color:#cfc5b4;font-family:Georgia,serif;font-size:18px}.book h3{font-size:14px;margin:10px 2px 3px;white-space:nowrap;overflow:hidden;text-overflow:ellipsis}.book p{font-size:11px;color:var(--muted);margin:0 2px}
-.empty{grid-column:1/-1;text-align:center;padding:60px 20px;color:var(--muted);border:1px dashed #444;border-radius:16px}.empty b{display:block;color:#eee;font-size:16px;margin-bottom:8px}
-#reader{position:fixed;inset:0;background:#090909;z-index:10;display:none;flex-direction:column;padding-top:env(safe-area-inset-top);padding-bottom:env(safe-area-inset-bottom)}
-.readerbar{height:56px;display:flex;align-items:center;justify-content:space-between;padding:0 12px;border-bottom:1px solid #333;flex-shrink:0}.readerbar .booktitle{font-size:13px;max-width:55%;overflow:hidden;text-overflow:ellipsis;white-space:nowrap}
-.stage{flex:1;min-height:0;display:flex;align-items:center;justify-content:center;perspective:1800px;padding:12px 8px;overflow:hidden}
-.bookstage{position:relative;width:min(96vw,900px);height:min(74vh,680px);display:flex;align-items:center;justify-content:center}
-.page{position:absolute;max-width:100%;max-height:100%;width:auto;height:auto;object-fit:contain;background:#fff;box-shadow:0 8px 30px #000a;transform-origin:left center;backface-visibility:hidden}
-.page.single{position:relative;transform-origin:center center}
-.page.flip-out{animation:flipOut .42s ease forwards}.page.flip-in{animation:flipIn .42s ease}
-@keyframes flipOut{to{transform:rotateY(-90deg);opacity:.2}}@keyframes flipIn{from{transform:rotateY(90deg);opacity:.2}to{transform:rotateY(0);opacity:1}}
-.controls{display:flex;align-items:center;justify-content:center;gap:12px;padding:12px}.counter{font-variant-numeric:tabular-nums;color:#ddd;font-size:13px;min-width:78px;text-align:center}
-.progress{height:3px;background:#333}.progress>i{display:block;height:100%;background:var(--accent);width:0}
-.readerfoot{display:flex;justify-content:center;gap:8px;padding:0 12px 12px}.readerfoot button{font-size:12px;padding:8px 12px}
-#zoomLayer{position:fixed;inset:0;background:#000;z-index:20;display:none;align-items:center;justify-content:center;touch-action:none}
-#zoomImg{max-width:100%;max-height:100%;object-fit:contain;transform-origin:center;touch-action:none}
-.modal{position:fixed;inset:0;background:#000a;z-index:30;display:none;align-items:center;justify-content:center;padding:20px}.modalbox{width:min(420px,100%);background:var(--panel);border:1px solid var(--line);border-radius:18px;padding:20px}.modalbox h2{margin:0 0 12px;font-size:18px}.modalbox input[type=text]{width:100%;padding:12px;background:#111;color:#fff;border:1px solid #555;border-radius:10px;margin:8px 0 16px}.modalbuttons{display:flex;justify-content:flex-end;gap:8px}
-.toast{position:fixed;bottom:25px;left:50%;transform:translateX(-50%);background:#eee;color:#111;padding:10px 16px;border-radius:30px;font-size:13px;z-index:50;display:none;white-space:nowrap}
+ :root{color-scheme:light;--bg:#fff8f5;--panel:#fff;--line:#f0dce1;--muted:#987f87;--accent:#d97996;--ink:#59434b;--mint:#dcefe7}
+*{box-sizing:border-box}body{margin:0;background:radial-gradient(ellipse at 10% 0%,#ffe8ee 0,transparent 38%),var(--bg);color:var(--ink);font-family:-apple-system,BlinkMacSystemFont,"Hiragino Kaku Gothic ProN",Meiryo,sans-serif}
+button,input{font:inherit}button{border:1px solid var(--line);background:#fff;color:var(--ink);border-radius:16px;padding:11px 14px;cursor:pointer;box-shadow:0 3px 10px #b87b8a12}button:disabled{opacity:.4}
+header{position:sticky;top:0;z-index:5;background:#fff9f6eF;backdrop-filter:blur(16px);border-bottom:1px solid var(--line);padding:max(12px,env(safe-area-inset-top)) 16px 12px;display:flex;align-items:center;justify-content:space-between}
+.brand{font-weight:800;letter-spacing:.04em;color:#a65370}.brand small{display:block;color:var(--muted);font-size:10px;font-weight:500;letter-spacing:.12em;margin-top:3px}
+main{max-width:1050px;margin:auto;padding:24px 16px 90px}.intro{display:flex;justify-content:space-between;align-items:end;gap:12px;margin:8px 0 20px}.intro h1{font-size:27px;margin:0 0 6px;color:#754b5a}.intro h1:before{content:'♡ ';color:var(--accent)}.intro p{margin:0;color:var(--muted);font-size:13px}
+.actions{display:flex;gap:8px;flex-wrap:wrap}.primary{background:linear-gradient(135deg,#e79ab0,#cf6f91);color:#fff;border-color:#d77d9a;font-weight:700}.notice{border:1px solid #eed9d0;background:#fff3ec;padding:12px 14px;border-radius:16px;color:#8e6e66;font-size:12px;line-height:1.7;margin-bottom:22px}
+.books{display:grid;grid-template-columns:repeat(auto-fill,minmax(145px,1fr));gap:22px 16px}.book{min-width:0;cursor:pointer}.cover{aspect-ratio:3/4;border-radius:12px;background:linear-gradient(145deg,#f5dce4,#f9eee5 55%,#e3eee7);border:1px solid #f0d8df;overflow:hidden;display:flex;align-items:center;justify-content:center;box-shadow:0 9px 22px #a66d7b20;position:relative}.cover:after{content:'';position:absolute;inset:7px;border:1px solid #ffffffa8;border-radius:8px;pointer-events:none}.cover img{width:100%;height:100%;object-fit:cover}.cover .placeholder{padding:14px;text-align:center;color:#986579;font-family:Georgia,serif;font-size:18px}.book h3{font-size:14px;margin:10px 2px 3px;white-space:nowrap;overflow:hidden;text-overflow:ellipsis;color:#694b57}.book p{font-size:11px;color:var(--muted);margin:0 2px}
+.empty{grid-column:1/-1;text-align:center;padding:54px 20px;color:var(--muted);border:1px dashed #e6c8d1;background:#fffaf8;border-radius:20px}.empty b{display:block;color:#87566a;font-size:17px;margin-bottom:8px}
+#reader{position:fixed;inset:0;background:#211b20;z-index:10;display:none;flex-direction:column;padding-top:env(safe-area-inset-top);padding-bottom:env(safe-area-inset-bottom)}
+.readerbar{height:56px;display:flex;align-items:center;justify-content:space-between;padding:0 12px;border-bottom:1px solid #51414a;flex-shrink:0}.readerbar button{background:#3a3036;color:#fff;border-color:#5c4a54}.readerbar .booktitle{font-size:13px;max-width:55%;overflow:hidden;text-overflow:ellipsis;white-space:nowrap;color:#fff}
+.stage{flex:1;min-height:0;display:flex;align-items:center;justify-content:center;perspective:1800px;padding:12px 8px;overflow:hidden}.bookstage{position:relative;width:min(96vw,900px);height:min(74vh,680px);display:flex;align-items:center;justify-content:center}.page{position:absolute;max-width:100%;max-height:100%;width:auto;height:auto;object-fit:contain;background:#fff;box-shadow:0 8px 30px #000a;transform-origin:left center;backface-visibility:hidden}.page.single{position:relative;transform-origin:center center}.page.flip-out{animation:flipOut .42s ease forwards}.page.flip-in{animation:flipIn .42s ease}@keyframes flipOut{to{transform:rotateY(-90deg);opacity:.2}}@keyframes flipIn{from{transform:rotateY(90deg);opacity:.2}to{transform:rotateY(0);opacity:1}}
+.controls{display:flex;align-items:center;justify-content:center;gap:12px;padding:12px}.controls button,.readerfoot button{background:#3a3036;color:#fff;border-color:#5c4a54}.counter{font-variant-numeric:tabular-nums;color:#f2e6eb;font-size:13px;min-width:78px;text-align:center}.progress{height:3px;background:#51414a}.progress>i{display:block;height:100%;background:#e69ab0;width:0}.readerfoot{display:flex;justify-content:center;gap:8px;padding:0 12px 12px}.readerfoot button{font-size:12px;padding:8px 12px}
+#zoomLayer{position:fixed;inset:0;background:#000;z-index:20;display:none;align-items:center;justify-content:center;touch-action:none}#zoomImg{max-width:100%;max-height:100%;object-fit:contain;transform-origin:center;touch-action:none}
+.modal{position:fixed;inset:0;background:#5c39488c;z-index:30;display:none;align-items:center;justify-content:center;padding:20px}.modalbox{width:min(420px,100%);background:var(--panel);border:1px solid var(--line);border-radius:22px;padding:20px;box-shadow:0 16px 50px #64394a30}.modalbox h2{margin:0 0 12px;font-size:18px;color:#754b5a}.modalbox input[type=text]{width:100%;padding:12px;background:#fff9f7;color:var(--ink);border:1px solid #e8cbd4;border-radius:12px;margin:8px 0 16px}.modalbuttons{display:flex;justify-content:flex-end;gap:8px}
+.toast{position:fixed;bottom:25px;left:50%;transform:translateX(-50%);background:#754b5a;color:#fff;padding:10px 16px;border-radius:30px;font-size:13px;z-index:50;display:none;white-space:nowrap}
 @media(min-width:700px){.bookstage{height:min(78vh,760px)}}
 </style>
 </head>
@@ -102,7 +98,8 @@ $('zoomLayer').onclick=()=>{$('zoomLayer').style.display='none'};
 let startX=0; $('bookstage').addEventListener('touchstart',e=>{startX=e.touches[0].clientX},{passive:true});$('bookstage').addEventListener('touchend',e=>{let dx=e.changedTouches[0].clientX-startX;if(Math.abs(dx)>55)turn(dx<0?1:-1)},{passive:true});
 document.addEventListener('keydown',e=>{if($('reader').style.display==='flex'){if(e.key==='ArrowRight')turn(1);if(e.key==='ArrowLeft')turn(-1);if(e.key==='Escape')$('closeReader').click()}});
 let pinchStart=0; $('zoomLayer').addEventListener('touchmove',e=>{if(e.touches.length===2){e.preventDefault();let d=Math.hypot(e.touches[0].clientX-e.touches[1].clientX,e.touches[0].clientY-e.touches[1].clientY);if(!pinchStart)pinchStart=d;zoomScale=Math.max(1,Math.min(4,d/pinchStart));$('zoomImg').style.transform=`scale(${zoomScale})`}},{passive:false});$('zoomLayer').addEventListener('touchend',()=>pinchStart=0);
-openDB().then(renderShelf).catch(e=>{console.error(e);toast('このブラウザではローカル保存を利用できません')});
+openDB().then(async()=>{try{if(navigator.storage?.persist)await navigator.storage.persist()}catch(e){console.warn('persistent storage request',e)}await renderShelf()}).catch(e=>{console.error(e);toast('このブラウザではローカル保存を利用できません')});
+if('serviceWorker' in navigator){window.addEventListener('load',()=>navigator.serviceWorker.register('./sw.js').catch(e=>console.warn('service worker',e)));}
 </script>
 
 <script>
@@ -177,16 +174,31 @@ openDB().then(renderShelf).catch(e=>{console.error(e);toast('このブラウザ�
   }catch(e){console.error(e);$('scanHint').textContent='撮影に失敗しました。もう一度位置を調整してください'}
  }
  async function start(){
+  $('scanner').style.display='flex';$('scanHint').textContent='カメラを起動しています…';scanPages=[];stable=0;paused=false;scanActive=false;
   try{
-   if(!navigator.mediaDevices?.getUserMedia)throw new Error('カメラ利用にはHTTPS接続が必要です');
-   $('scanner').style.display='flex';$('scanHint').textContent='カメラを準備しています…';
-   await loadCV();
-   stream=await navigator.mediaDevices.getUserMedia({video:{facingMode:{ideal:'environment'},width:{ideal:1920},height:{ideal:2560}},audio:false});
-   $('scanVideo').srcObject=stream;await $('scanVideo').play();scanPages=[];stable=0;paused=false;scanActive=true;$('scanCount').textContent='0 ページ';$('scanPause').textContent='一時停止';$('scanHint').textContent='本のページ全体を枠内に入れてください';raf=requestAnimationFrame(detect);
-  }catch(e){console.error(e);$('scanHint').textContent=e.message||'カメラを起動できませんでした';}
+   if(!navigator.mediaDevices?.getUserMedia)throw new Error('このSafariではカメラAPIを利用できません。SafariでHTTPSのサイトを開いてください。');
+   stream=await navigator.mediaDevices.getUserMedia({audio:false,video:{facingMode:{ideal:'environment'},width:{ideal:1920},height:{ideal:2560}}});
+   const video=$('scanVideo');video.srcObject=stream;await video.play();
+   $('scanCount').textContent='0 ページ';$('scanPause').textContent='一時停止';scanActive=true;
+   $('scanHint').textContent='カメラ起動OK。自動補正を準備しています…';
+   // カメラ映像を先に出す。OpenCVのCDN待ちでカメラ起動を止めない。
+   loadCV().then(()=>{if(scanActive){$('scanHint').textContent='ページ全体を枠内に入れてください';stable=0;raf=requestAnimationFrame(detect)}})
+    .catch(err=>{console.warn('OpenCV unavailable; manual full-frame capture enabled',err);cvReady=false;$('scanHint').textContent='自動検出は利用できません。ページを画面に合わせて「手動撮影」を使えます。'});
+  }catch(e){console.error('camera start failed',e);$('scanHint').textContent='カメラを起動できませんでした：'+(e.name||'Error')+' / '+(e.message||'原因不明')+'。Safariのサイト別カメラ設定とiPhoneのカメラ許可を確認してください。';}
  }
  function stopCamera(){scanActive=false;cancelAnimationFrame(raf);if(stream){stream.getTracks().forEach(t=>t.stop());stream=null} $('scanVideo').srcObject=null}
- function manual(){if(!stream)return;let v=$('scanVideo'),w=v.videoWidth,h=v.videoHeight;let tmp=document.createElement('canvas');tmp.width=640;tmp.height=Math.round(640*h/w);tmp.getContext('2d').drawImage(v,0,0,tmp.width,tmp.height);let img=cv.imread(tmp),gray=new cv.Mat(),edges=new cv.Mat(),contours=new cv.MatVector(),hier=new cv.Mat();cv.cvtColor(img,gray,cv.COLOR_RGBA2GRAY);cv.Canny(gray,edges,40,120);cv.findContours(edges,contours,hier,cv.RETR_LIST,cv.CHAIN_APPROX_SIMPLE);let best=null,area=0;for(let i=0;i<contours.size();i++){let ct=contours.get(i),p=cv.arcLength(ct,true),a=new cv.Mat();cv.approxPolyDP(ct,a,.025*p,true);let ar=Math.abs(cv.contourArea(a));if(a.rows===4&&ar>area&&ar>tmp.width*tmp.height*.15){let ps=[];for(let j=0;j<4;j++)ps.push({x:a.intAt(j,0),y:a.intAt(j,1)});best=orderPts(ps);area=ar}ct.delete();a.delete()}img.delete();gray.delete();edges.delete();contours.delete();hier.delete();if(best)capturePage(best,w,h);else $('scanHint').textContent='ページ境界を検出できません。明るい場所でページ全体を映してください'}
+ function manual(){
+  if(!stream)return;
+  const v=$('scanVideo'),w=v.videoWidth,h=v.videoHeight;if(!w||!h){$('scanHint').textContent='映像の準備中です。少し待ってください';return}
+  // OpenCVが使える場合は従来の四隅補正を試す。失敗・未読込ならフレーム全体を保存。
+  if(cvReady&&window.cv&&cv.Mat){
+   try{const tmp=document.createElement('canvas');tmp.width=640;tmp.height=Math.round(640*h/w);tmp.getContext('2d').drawImage(v,0,0,tmp.width,tmp.height);let img=cv.imread(tmp),gray=new cv.Mat(),edges=new cv.Mat(),contours=new cv.MatVector(),hier=new cv.Mat();cv.cvtColor(img,gray,cv.COLOR_RGBA2GRAY);cv.Canny(gray,edges,40,120);cv.findContours(edges,contours,hier,cv.RETR_LIST,cv.CHAIN_APPROX_SIMPLE);let best=null,area=0;for(let i=0;i<contours.size();i++){let ct=contours.get(i),per=cv.arcLength(ct,true),a=new cv.Mat();cv.approxPolyDP(ct,a,.025*per,true);let ar=Math.abs(cv.contourArea(a));if(a.rows===4&&ar>area&&ar>tmp.width*tmp.height*.15){let ps=[];for(let j=0;j<4;j++)ps.push({x:a.intAt(j,0),y:a.intAt(j,1)});best=orderPts(ps);area=ar}ct.delete();a.delete()}img.delete();gray.delete();edges.delete();contours.delete();hier.delete();if(best){capturePage(best,w,h);return}}
+   catch(e){console.warn('manual perspective correction failed',e)}
+  }
+  const canvas=document.createElement('canvas');canvas.width=w;canvas.height=h;canvas.getContext('2d').drawImage(v,0,0,w,h);
+  canvas.toBlob(blob=>{if(blob){scanPages.push({blob,type:'image/jpeg',label:`スキャン ${scanPages.length+1}`});$('scanCount').textContent=scanPages.length+' ページ';$('scanHint').textContent=`${scanPages.length}ページを撮影しました（全体撮影）。次のページへ進んでください`;navigator.vibrate?.(35)}else $('scanHint').textContent='撮影画像を保存できませんでした'},'image/jpeg',.94);
+ }
+
  async function finish(){
   stopCamera();$('scanner').style.display='none';
   if(!scanPages.length){toast('撮影したページがありません');return}
